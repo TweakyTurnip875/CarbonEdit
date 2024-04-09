@@ -27,6 +27,16 @@ public class Main extends JFrame implements ActionListener {
 		fileMenu.add(openFileMenuItem);
 		fileMenu.add(saveFileMenuItem);
 		fileMenu.add(saveAsFileMenuItem);
+		
+		JMenu editMenu = new JMenu("Edit");
+		
+		JMenuItem cutEditMenuItem = new JMenuItem("Cut");
+		JMenuItem copyEditMenuItem = new JMenuItem("Copy");
+		JMenuItem pasteEditMenuItem = new JMenuItem("Paste");
+		
+		editMenu.add(cutEditMenuItem);
+		editMenu.add(copyEditMenuItem);
+		editMenu.add(pasteEditMenuItem);
 	}
 
 	@Override
