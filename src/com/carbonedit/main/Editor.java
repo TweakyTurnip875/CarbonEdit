@@ -8,9 +8,9 @@ import javax.swing.plaf.metal.*;
 import javax.swing.text.*;
 
 public class Editor extends JFrame implements ActionListener {
-	
+	JFrame frame;
 	public Editor() {
-		JFrame frame = new JFrame("CarbonEdit");
+		frame = new JFrame("CarbonEdit");
 		JTextArea textArea = new JTextArea();
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -40,10 +40,13 @@ public class Editor extends JFrame implements ActionListener {
 		
 		JMenuItem closeMenuItem = new JMenuItem("Close");
 		
+		closeMenuItem.addActionListener(this);
+		
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
 		menuBar.add(closeMenuItem);
 		
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setJMenuBar(menuBar);
 		frame.add(textArea);
 		frame.setSize(500,500);
@@ -52,7 +55,11 @@ public class Editor extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String command = e.getActionCommand();
 		
+		if(command.equalsIgnoreCase("Close")) {
+			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		}
 	}
 	public static void main(String args[]) {
 		Editor editor = new Editor();
