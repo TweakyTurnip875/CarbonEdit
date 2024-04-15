@@ -37,6 +37,12 @@ public class Main extends JFrame implements ActionListener {
 		editMenu.add(cutEditMenuItem);
 		editMenu.add(copyEditMenuItem);
 		editMenu.add(pasteEditMenuItem);
+		
+		JMenuItem closeMenuItem = new JMenuItem("Close");
+		
+		menuBar.add(fileMenu);
+		menuBar.add(editMenu);
+		menuBar.add(closeMenuItem);
 	}
 
 	@Override
