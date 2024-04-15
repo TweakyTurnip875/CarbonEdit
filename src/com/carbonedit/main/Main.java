@@ -43,10 +43,18 @@ public class Main extends JFrame implements ActionListener {
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
 		menuBar.add(closeMenuItem);
+		
+		frame.setJMenuBar(menuBar);
+		frame.add(textArea);
+		frame.setSize(500,500);
+		frame.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+	}
+	public static void main(String args[]) {
+		Main editor = new Main();
 	}
 }
