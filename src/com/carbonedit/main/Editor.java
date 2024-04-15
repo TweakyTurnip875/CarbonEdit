@@ -7,9 +7,9 @@ import java.awt.event.*;
 import javax.swing.plaf.metal.*;
 import javax.swing.text.*;
 
-public class Main extends JFrame implements ActionListener {
+public class Editor extends JFrame implements ActionListener {
 	
-	public Main() {
+	public Editor() {
 		JFrame frame = new JFrame("CarbonEdit");
 		JTextArea textArea = new JTextArea();
 		JMenuBar menuBar = new JMenuBar();
@@ -55,6 +55,6 @@ public class Main extends JFrame implements ActionListener {
 		
 	}
 	public static void main(String args[]) {
-		Main editor = new Main();
+		Editor editor = new Editor();
 	}
 }
