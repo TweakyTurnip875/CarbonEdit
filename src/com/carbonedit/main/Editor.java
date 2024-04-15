@@ -10,6 +10,14 @@ import javax.swing.text.*;
 public class Editor extends JFrame implements ActionListener {
 	JFrame frame;
 	public Editor() {
+		
+		try {
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			MetalLookAndFeel.setCurrentTheme(new OceanTheme());
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
 		frame = new JFrame("CarbonEdit");
 		JTextArea textArea = new JTextArea();
 		JMenuBar menuBar = new JMenuBar();
