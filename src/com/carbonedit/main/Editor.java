@@ -49,6 +49,7 @@ public class Editor extends JFrame implements ActionListener {
 		
 		cutEditMenuItem.addActionListener(this);
 		copyEditMenuItem.addActionListener(this);
+		pasteEditMenuItem.addActionListener(this);
 		
 		JMenuItem closeMenuItem = new JMenuItem("Close");
 		
@@ -77,6 +78,8 @@ public class Editor extends JFrame implements ActionListener {
 			textArea.cut();
 		} else if(command.equalsIgnoreCase("Copy")) {
 			textArea.copy();
+		} else if(command.equalsIgnoreCase("Paste")) {
+			textArea.paste();
 		}
 	}
 	public static void main(String args[]) {
