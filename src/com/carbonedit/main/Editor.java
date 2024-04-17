@@ -9,6 +9,7 @@ import javax.swing.text.*;
 
 public class Editor extends JFrame implements ActionListener {
 	JFrame frame;
+	JTextArea textArea;
 	public Editor() {
 		
 		try {
@@ -19,7 +20,7 @@ public class Editor extends JFrame implements ActionListener {
 		}
 		
 		frame = new JFrame("CarbonEdit");
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		JMenuBar menuBar = new JMenuBar();
 		
 		JMenu fileMenu = new JMenu("File");
@@ -35,6 +36,8 @@ public class Editor extends JFrame implements ActionListener {
 		fileMenu.add(openFileMenuItem);
 		fileMenu.add(saveFileMenuItem);
 		fileMenu.add(saveAsFileMenuItem);
+		
+		newFileMenuItem.addActionListener(this);
 		
 		JMenu editMenu = new JMenu("Edit");
 		
@@ -67,6 +70,8 @@ public class Editor extends JFrame implements ActionListener {
 		
 		if(command.equalsIgnoreCase("Close")) {
 			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		} else if(command.equalsIgnoreCase("New")) {
+			textArea.setText("");
 		}
 	}
 	public static void main(String args[]) {
