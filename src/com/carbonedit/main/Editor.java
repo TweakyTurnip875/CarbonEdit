@@ -36,6 +36,7 @@ public class Editor extends JFrame implements ActionListener {
 		fileMenu.add(saveAsFileMenuItem);
 		
 		newFileMenuItem.addActionListener(this);
+		openFileMenuItem.addActionListener(this);
 		
 		JMenu editMenu = new JMenu("Edit");
 		
@@ -80,6 +81,14 @@ public class Editor extends JFrame implements ActionListener {
 			textArea.copy();
 		} else if(command.equalsIgnoreCase("Paste")) {
 			textArea.paste();
+		} else if(command.equalsIgnoreCase("Open")) {
+			JFileChooser fileChooser = new JFileChooser("f:");
+			
+			int option = fileChooser.showOpenDialog(null);
+			
+			if(option == JFileChooser.APPROVE_OPTION) {
+				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
+			}
 		}
 	}
 	public static void main(String args[]) {
