@@ -13,8 +13,8 @@ import javax.swing.text.*;
 import java.util.List;
 
 public class Editor extends JFrame implements ActionListener {
-	JFrame frame;
-	JTextArea textArea;
+	private JFrame frame;
+	private JTextArea textArea;
 	public Editor() {
 		
 		try {
