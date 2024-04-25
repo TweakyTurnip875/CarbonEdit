@@ -3,9 +3,14 @@ package com.carbonedit.main;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.awt.event.*;
 import javax.swing.plaf.metal.*;
 import javax.swing.text.*;
+import java.util.List;
 
 public class Editor extends JFrame implements ActionListener {
 	JFrame frame;
@@ -87,7 +92,20 @@ public class Editor extends JFrame implements ActionListener {
 			int option = fileChooser.showOpenDialog(null);
 			
 			if(option == JFileChooser.APPROVE_OPTION) {
-				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
+				Path filePath = Paths.get(fileChooser.getSelectedFile().getAbsolutePath());
+				
+				String content = "";
+				try {
+					List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+					
+					for(String line : lines) {
+						content += (line + "\n");
+					}
+					
+					textArea.setText(content);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
