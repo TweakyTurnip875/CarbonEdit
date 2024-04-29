@@ -42,6 +42,7 @@ public class Editor extends JFrame implements ActionListener {
 		
 		newFileMenuItem.addActionListener(this);
 		openFileMenuItem.addActionListener(this);
+		saveFileMenuItem.addActionListener(this);
 		
 		JMenu editMenu = new JMenu("Edit");
 		
@@ -107,6 +108,24 @@ public class Editor extends JFrame implements ActionListener {
 					e1.printStackTrace();
 				}
 			}
+		} else if(command.equalsIgnoreCase("Save")) {
+			JFileChooser fileChooser = new JFileChooser("f:");
+			
+			int option = fileChooser.showSaveDialog(null);
+			
+			if(option == JFileChooser.APPROVE_OPTION) {
+				try {
+					FileWriter writer = new FileWriter(fileChooser.getSelectedFile() + ".txt");
+					writer.write(textArea.getText().toString());
+					
+					writer.flush();
+					writer.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+			
 		}
 	}
 	public static void main(String args[]) {
