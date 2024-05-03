@@ -132,7 +132,13 @@ public class Editor extends JFrame implements ActionListener {
 			} else {
 				FileWriter writer;
 				try {
-					writer = new FileWriter(currentFile + ".txt");
+					if(!currentFile.getName().endsWith(".txt")) {
+						writer = new FileWriter(currentFile + ".txt");
+						
+					} else {
+						writer = new FileWriter(currentFile);
+					}
+					
 					writer.write(textArea.getText().toString());
 					
 					writer.flush();
