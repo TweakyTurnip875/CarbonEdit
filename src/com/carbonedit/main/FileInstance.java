@@ -86,7 +86,10 @@ public class FileInstance {
 			}
 		}
 	}
-	
+	public void newFile(JTextArea textArea) {
+		currentFile = null;
+		textArea.setText("");
+	}
 	public File getCurrentFile() {
 		return currentFile;
 	}

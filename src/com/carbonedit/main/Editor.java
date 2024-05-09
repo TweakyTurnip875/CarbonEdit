@@ -83,7 +83,7 @@ public class Editor extends JFrame implements ActionListener {
 		if(command.equalsIgnoreCase("Close")) {
 			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 		} else if(command.equalsIgnoreCase("New")) {
-			textArea.setText("");
+			fileInstance.newFile(textArea);
 		} else if(command.equalsIgnoreCase("Cut")) {
 			textArea.cut();
 		} else if(command.equalsIgnoreCase("Copy")) {
