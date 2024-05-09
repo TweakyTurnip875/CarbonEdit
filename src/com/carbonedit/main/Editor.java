@@ -15,7 +15,8 @@ import java.util.List;
 public class Editor extends JFrame implements ActionListener {
 	private JFrame frame;
 	private JTextArea textArea;
-	private File currentFile = null;
+	private FileInstance fileInstance = new FileInstance();
+
 	public Editor() {
 		
 		try {
@@ -94,8 +95,8 @@ public class Editor extends JFrame implements ActionListener {
 			int option = fileChooser.showOpenDialog(null);
 			
 			if(option == JFileChooser.APPROVE_OPTION) {
-				currentFile = fileChooser.getSelectedFile();
-				Path filePath = Paths.get(currentFile.getAbsolutePath());
+				fileInstance.setCurrentFile(fileChooser.getSelectedFile());
+				Path filePath = Paths.get(fileInstance.getCurrentFile().getAbsolutePath());
 				
 				String content = "";
 				try {
@@ -111,44 +112,7 @@ public class Editor extends JFrame implements ActionListener {
 				}
 			}
 		} else if(command.equalsIgnoreCase("Save")) {
-			if(currentFile == null) {
-				JFileChooser fileChooser = new JFileChooser("f:");
-				
-				int option = fileChooser.showSaveDialog(null);
-				
-				if(option == JFileChooser.APPROVE_OPTION) {
-					try {
-						currentFile = fileChooser.getSelectedFile();
-						FileWriter writer = new FileWriter(currentFile + ".txt");
-						writer.write(textArea.getText().toString());
-						
-						writer.flush();
-						writer.close();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
-				}
-			} else {
-				FileWriter writer;
-				try {
-					if(!currentFile.getName().endsWith(".txt")) {
-						writer = new FileWriter(currentFile + ".txt");
-						
-					} else {
-						writer = new FileWriter(currentFile);
-					}
-					
-					writer.write(textArea.getText().toString());
-					
-					writer.flush();
-					writer.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
+			fileInstance.save(textArea);
 			
 		}
 	}
