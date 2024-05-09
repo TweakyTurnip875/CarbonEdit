@@ -91,27 +91,7 @@ public class Editor extends JFrame implements ActionListener {
 		} else if(command.equalsIgnoreCase("Paste")) {
 			textArea.paste();
 		} else if(command.equalsIgnoreCase("Open")) {
-			JFileChooser fileChooser = new JFileChooser("f:");
-			
-			int option = fileChooser.showOpenDialog(null);
-			
-			if(option == JFileChooser.APPROVE_OPTION) {
-				fileInstance.setCurrentFile(fileChooser.getSelectedFile());
-				Path filePath = Paths.get(fileInstance.getCurrentFile().getAbsolutePath());
-				
-				String content = "";
-				try {
-					List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
-					
-					for(String line : lines) {
-						content += (line + "\n");
-					}
-					
-					textArea.setText(content);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
+			fileInstance.open(textArea);
 		} else if(command.equalsIgnoreCase("Save")) {
 			fileInstance.save(textArea);
 		} else if(command.equalsIgnoreCase("Save As")) {

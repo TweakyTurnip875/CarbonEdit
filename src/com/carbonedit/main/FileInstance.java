@@ -3,6 +3,11 @@ package com.carbonedit.main;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
@@ -56,6 +61,29 @@ public class FileInstance {
 				e1.printStackTrace();
 			}
 			
+		}
+	}
+	public void open(JTextArea textArea) {
+		JFileChooser fileChooser = new JFileChooser("f:");
+		
+		int option = fileChooser.showOpenDialog(null);
+		
+		if(option == JFileChooser.APPROVE_OPTION) {
+			currentFile = fileChooser.getSelectedFile();
+			Path filePath = Paths.get(currentFile.getAbsolutePath());
+			
+			String content = "";
+			try {
+				List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+				
+				for(String line : lines) {
+					content += (line + "\n");
+				}
+				
+				textArea.setText(content);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	
