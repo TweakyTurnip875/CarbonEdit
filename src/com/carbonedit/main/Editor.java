@@ -45,6 +45,7 @@ public class Editor extends JFrame implements ActionListener {
 		newFileMenuItem.addActionListener(this);
 		openFileMenuItem.addActionListener(this);
 		saveFileMenuItem.addActionListener(this);
+		saveAsFileMenuItem.addActionListener(this);
 		
 		JMenu editMenu = new JMenu("Edit");
 		
@@ -113,7 +114,8 @@ public class Editor extends JFrame implements ActionListener {
 			}
 		} else if(command.equalsIgnoreCase("Save")) {
 			fileInstance.save(textArea);
-			
+		} else if(command.equalsIgnoreCase("Save As")) {
+			fileInstance.saveAs(textArea);
 		}
 	}
 	public static void main(String args[]) {
