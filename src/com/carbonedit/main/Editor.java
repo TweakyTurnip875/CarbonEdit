@@ -16,6 +16,7 @@ public class Editor extends JFrame implements ActionListener {
 	private JFrame frame;
 	private JTextArea textArea;
 	private FileInstance fileInstance = new FileInstance();
+	private String title;
 
 	public Editor() {
 		
@@ -25,8 +26,13 @@ public class Editor extends JFrame implements ActionListener {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		try {
+			title = fileInstance.getCurrentFile().getName();
+		} catch(NullPointerException e1) {
+			title = "Untitled";
+		}
+		frame = new JFrame(title);
 		
-		frame = new JFrame("CarbonEdit");
 		textArea = new JTextArea();
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -84,6 +90,7 @@ public class Editor extends JFrame implements ActionListener {
 			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 		} else if(command.equalsIgnoreCase("New")) {
 			fileInstance.newFile(textArea);
+			frame.setTitle("Untitled");
 		} else if(command.equalsIgnoreCase("Cut")) {
 			textArea.cut();
 		} else if(command.equalsIgnoreCase("Copy")) {
@@ -92,10 +99,14 @@ public class Editor extends JFrame implements ActionListener {
 			textArea.paste();
 		} else if(command.equalsIgnoreCase("Open")) {
 			fileInstance.open(textArea);
+			System.out.println(fileInstance.getCurrentFile().getAbsolutePath());
+			frame.setTitle(fileInstance.getCurrentFile().getName());
 		} else if(command.equalsIgnoreCase("Save")) {
 			fileInstance.save(textArea);
+			frame.setTitle(fileInstance.getCurrentFile().getName());
 		} else if(command.equalsIgnoreCase("Save As")) {
 			fileInstance.saveAs(textArea);
+			frame.setTitle(fileInstance.getCurrentFile().getName());
 		}
 	}
 	public static void main(String args[]) {
