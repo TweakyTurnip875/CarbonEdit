@@ -18,6 +18,7 @@ public class FileInstance {
 	public FileInstance() {
 		currentFile = null;
 	}
+
 	public FileInstance(File currentFile) {
 		this.currentFile = currentFile;
 	}
@@ -52,15 +53,17 @@ public class FileInstance {
 		if(option == JFileChooser.APPROVE_OPTION) {
 			try {
 				currentFile = fileChooser.getSelectedFile();
+				System.out.println(currentFile.getName());
 				FileWriter writer = new FileWriter(currentFile + ".txt");
 				writer.write(textArea.getText().toString());
-				
+
 				writer.flush();
 				writer.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			
+			currentFile = new File(currentFile.getAbsolutePath() + ".txt");
+			System.out.println(currentFile.getName());
 		}
 	}
 	public void open(JTextArea textArea) {
