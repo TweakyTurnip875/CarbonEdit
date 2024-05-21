@@ -18,13 +18,29 @@ create an application that is both useful for developers and regular users.
 [Image Caption](image.png)
 
 ## Code Example
-Show a small snippet of the code you are proud of and why.
+The following code snippet is called when the user clicks the open option in the file dropdown menu. This piece of code illustrates the fundamentals for the other features in the file dropdown (e.g. save, save as, new).
 ```
-Insert Code Here
+	public void open(JTextArea textArea) {
+		JFileChooser fileChooser = new JFileChooser("f:");
+		
+		int option = fileChooser.showOpenDialog(null); // Display the open menu.
+		
+		if(option == JFileChooser.APPROVE_OPTION) { // If/when the user selects a file to open.
+			currentFile = fileChooser.getSelectedFile();
+			Path filePath = Paths.get(currentFile.getAbsolutePath());
+			
+			String content = ""; // Variable for storing the data of the selected file.
+			try {
+				List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8); // Read all lines of the selected file and store them in a list variable.
+				
+				for(String line : lines) { // Parse through each line (the list) and add each line to the content vaiable.
+					content += (line + "\n");
+				}
+				
+				textArea.setText(content); // Set the contents of the text area to the data in the content variable.
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
 ```
-
-## Tests
-Describe and show how to run the tests with code examples. State that you are using JUnit4 to test.
-
-## Contributors
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
