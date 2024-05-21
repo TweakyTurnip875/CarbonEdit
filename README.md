@@ -1,12 +1,12 @@
 # CarbonEdit
 
 ## Synopsis
-This project is a text editor application similar to Notepad. It is currently a work in progress, so I will be adding many new features in the future.
+This project is a text editor application similar to Notepad. I will be adding many new features in the future as the project is still a work in progress.
 
 ## Motivation
 I decided to build this application because I found that many text editors were not as useful to me as they could have been. For example, notepad lacks several text manipulation features, including several
 text manipulation features like settings for italic text, bold text, changing fonts, and more. Additionally, applications like Microsoft Word do not offer an good experience for developers. I hope to
-create an application that is both useful for developers and regular users.
+create an application that is both useful for developers and regular users. I will implement these features in the future.
 
 ## How to Run
 - Recomended Java Version: Java 8
@@ -15,7 +15,7 @@ create an application that is both useful for developers and regular users.
   <li>Execute the Editor class as the main class or execute Editor.java</li>
 </ol>
 
-[Image Caption](image.png)
+[This is what the output will look like](https://github.com/TweakyTurnip875/CarbonEdit/assets/44481502/3ad4f3b4-c63b-437d-bed0-7ca093c2a444)
 
 ## Code Example
 The following code snippet is called when the user clicks the open option in the file dropdown menu. This piece of code illustrates the fundamentals for the other features in the file dropdown (e.g. save, save as, new).
