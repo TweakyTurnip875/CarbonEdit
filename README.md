@@ -9,7 +9,12 @@ text manipulation features like settings for italic text, bold text, changing fo
 create an application that is both useful for developers and regular users.
 
 ## How to Run
-Currently, I would recommend running this program in Java 8.
+- Recomended Java Version: Java 8
+<ol>
+  <li>Download on Github page or clone with Git/Github Client</li>
+  <li>Execute the Editor class as the main class or execute Editor.java</li>
+</ol>
+
 [Image Caption](image.png)
 
 ## Code Example
